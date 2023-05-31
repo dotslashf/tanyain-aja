@@ -40,10 +40,10 @@ const Button: React.FC<ButtonProps> = ({
         focus-visible:outline-offset-2
         transition
       `,
-        disabled && "bg-gray-300 text-gray-500 cursor-not-allowed",
+        disabled && "opacity-50 cursor-default",
         fullWidth && "w-full",
         secondary ? "text-gray-900" : "text-white",
-        danger && "bg-red-500 hover:bg-rose-600 focus-visible:ring-rose-500",
+        danger && "bg-rose-500 hover:bg-rose-600 focus-visible:ring-rose-500",
         !secondary &&
           !danger &&
           "bg-orange-300 hover:bg-orange-400 focus-visible:ring-orange-500"

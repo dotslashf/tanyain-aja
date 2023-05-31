@@ -64,7 +64,7 @@ const Input: React.FC<InputProps> = ({
             sm:leading-6
           `,
             errors[id] && "focus:ring-rose-500",
-            disabled && "bg-gray-100"
+            disabled && "opacity-50 cursor-default bg-slate-200"
           )}
         />
       </div>
