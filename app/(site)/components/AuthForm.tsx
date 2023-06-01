@@ -2,19 +2,29 @@
 
 import Button from '@/app/components/Button';
 import Input from '@/app/components/Input';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import AuthSocialButton from './AuthSocialButton';
 import { BsTwitter } from 'react-icons/bs';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import { signIn } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 type Variant = 'SignIn' | 'SignUp';
 
 const AuthForm = () => {
   const [variant, setVariant] = useState<Variant>('SignIn');
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const session = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (session?.status === 'authenticated') {
+      console.log('authenticated');
+      router.push('/profile');
+    }
+  }, [router, session?.status]);
 
   const toggleVariant = useCallback(() => {
     if (variant === 'SignIn') {
@@ -41,6 +51,9 @@ const AuthForm = () => {
     if (variant === 'SignUp') {
       axios
         .post('/api/register', data)
+        .then(() => {
+          signIn('credentials', data);
+        })
         .catch((err) => {
           toast.error('Something went wrong');
         })
@@ -56,8 +69,9 @@ const AuthForm = () => {
         password: data.password,
       })
         .then((callback) => {
-          if (!callback?.error) {
+          if (callback?.ok && !callback?.error) {
             toast.success('Logged in successfully');
+            router.push('/profile');
           } else {
             toast.error('Invalid credentials');
           }
