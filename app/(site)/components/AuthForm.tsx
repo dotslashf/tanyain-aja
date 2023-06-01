@@ -3,9 +3,12 @@
 import Button from '@/app/components/Button';
 import Input from '@/app/components/Input';
 import { useCallback, useState } from 'react';
-import { FieldValues, useForm } from 'react-hook-form';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import AuthSocialButton from './AuthSocialButton';
 import { BsTwitter } from 'react-icons/bs';
+import axios from 'axios';
+import toast from 'react-hot-toast';
+import { signIn } from 'next-auth/react';
 
 type Variant = 'SignIn' | 'SignUp';
 
@@ -36,18 +39,53 @@ const AuthForm = () => {
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
     if (variant === 'SignUp') {
-      //TODO SignUp
+      axios
+        .post('/api/register', data)
+        .catch((err) => {
+          toast.error('Something went wrong');
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
     }
 
     if (variant === 'SignIn') {
-      //TODO SignIn
+      signIn('credentials', {
+        redirect: false,
+        email: data.email,
+        password: data.password,
+      })
+        .then((callback) => {
+          if (!callback?.error) {
+            toast.success('Logged in successfully');
+          } else {
+            toast.error('Invalid credentials');
+          }
+        })
+        .catch(() => {
+          toast.error('Something went wrong');
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
     }
   };
 
   const socialAction = (action: string) => {
     setIsLoading(true);
 
-    // TODO Social Auth
+    signIn(action, { redirect: false })
+      .then((callback) => {
+        if (!callback?.error) {
+          toast.success('Logged in successfully');
+        } else {
+          toast.error('Invalid credentials');
+        }
+      })
+      .catch(() => {
+        toast.error('Something went wrong');
+      })
+      .finally(() => setIsLoading(false));
   };
 
   return (
