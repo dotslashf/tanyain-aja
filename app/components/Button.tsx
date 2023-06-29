@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import clsx from "clsx";
+import clsx from 'clsx';
 
 interface ButtonProps {
-  type?: "button" | "submit" | "reset";
+  type?: 'button' | 'submit' | 'reset';
   fullWidth?: boolean;
   children: React.ReactNode;
   onClick?: () => void;
@@ -40,13 +40,13 @@ const Button: React.FC<ButtonProps> = ({
         focus-visible:outline-offset-2
         transition
       `,
-        disabled && "opacity-50 cursor-default",
-        fullWidth && "w-full",
-        secondary ? "text-gray-900" : "text-white",
-        danger && "bg-rose-500 hover:bg-rose-600 focus-visible:ring-rose-500",
+        disabled && 'opacity-50 cursor-default',
+        fullWidth && 'w-full',
+        secondary ? 'text-slate-800' : 'text-white',
+        danger && 'bg-rose-500 hover:bg-rose-600 focus-visible:ring-rose-500',
         !secondary &&
           !danger &&
-          "bg-orange-300 hover:bg-orange-400 focus-visible:ring-orange-500"
+          'bg-primary hover:bg-sky-500 focus-visible:ring-sky-500'
       )}
     >
       {children}

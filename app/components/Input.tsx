@@ -24,10 +24,7 @@ const Input: React.FC<InputProps> = ({
 }) => {
   return (
     <div>
-      <label
-        htmlFor={id}
-        className="block text-sm font-medium text-gray-900 leading-6 "
-      >
+      <label htmlFor={id} className="block text-sm font-medium leading-6 ">
         {label}
       </label>
       <div className="mt-2">
@@ -45,7 +42,6 @@ const Input: React.FC<InputProps> = ({
             rounded-md
             border-0
             py-1.5
-            text-gray-900
             shadow-sm
             ring-1
             ring-inset

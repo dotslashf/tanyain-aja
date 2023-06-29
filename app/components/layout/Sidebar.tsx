@@ -16,11 +16,11 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className="h-screen bg-gray-500 ">
-      <div className="flex flex-col w-20 h-full overflow-hidden overflow-y-auto bg-white border-r border-gray-200 md:w-48 lg:w-64 py-7 scrollbar-y">
+    <div className="h-screen bg-gray-500 shadow-lg shadow-slate-200">
+      <div className="flex flex-col w-full h-full overflow-hidden overflow-y-auto border-r border-gray-200 bg-slate-50 md:w-48 lg:w-64 py-7 scrollbar-y">
         <div className="px-6">
           <Link
-            className="flex-none hidden text-xl font-semibold md:block"
+            className="flex-none hidden text-xl font-semibold transition-colors md:block text-primary"
             href="/"
             aria-label="Brand"
           >
