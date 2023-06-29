@@ -21,7 +21,7 @@ const AuthForm = () => {
 
   useEffect(() => {
     if (session?.status === 'authenticated') {
-      router.push('/profile');
+      router.push('/timeline');
     }
   }, [router, session?.status]);
 
@@ -70,7 +70,7 @@ const AuthForm = () => {
         .then((callback) => {
           if (callback?.ok && !callback?.error) {
             toast.success('Logged in successfully');
-            router.push('/profile');
+            router.push('/timeline');
           } else {
             toast.error('Invalid credentials');
           }
@@ -90,7 +90,7 @@ const AuthForm = () => {
     signIn(action, { redirect: false })
       .then((callback) => {
         if (!callback?.error) {
-          toast.success('Logged in successfully');
+          toast.loading('Redirecting...');
         } else {
           toast.error('Invalid credentials');
         }

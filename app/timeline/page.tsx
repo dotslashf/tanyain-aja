@@ -2,13 +2,13 @@
 
 import { signOut } from 'next-auth/react';
 
-const Profile = () => {
+const Timeline = () => {
   return (
     <div>
-      Profile
+      Timeline
       <button onClick={() => signOut()}>Sign Out</button>
     </div>
   );
 };
 
-export default Profile;
+export default Timeline;
