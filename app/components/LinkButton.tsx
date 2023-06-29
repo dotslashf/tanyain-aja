@@ -16,19 +16,19 @@ const LinkButton: React.FC<LinkButtonProps> = ({
 }) => {
   return onClick ? (
     <button
-      className="w-full flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm font-semibold text-slate-700 rounded-md hover:bg-gray-300 dark:bg-gray-900 dark:text-white transition-colors"
+      className="w-full flex justify-center md:justify-start items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm font-semibold text-slate-700 rounded-md hover:bg-gray-300 transition-colors"
       onClick={onClick}
     >
-      <Icon className="w-3.5 h-3.5 stroke-1" />
-      {children}
+      <Icon className="w-4 h-4 stroke-1" />
+      <span className="hidden md:block">{children}</span>
     </button>
   ) : (
     <Link
       href={name.toLowerCase()}
-      className="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm font-semibold text-slate-700 rounded-md hover:bg-gray-300 dark:bg-gray-900 dark:text-white transition-colors"
+      className="w-full flex justify-center md:justify-start items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm font-semibold text-slate-700 rounded-md hover:bg-gray-300 transition-colors"
     >
-      <Icon className="w-3.5 h-3.5 stroke-1" />
-      {children}
+      <Icon className="w-4 h-4 stroke-1" />
+      <span className="hidden md:block">{children}</span>
     </Link>
   );
 };

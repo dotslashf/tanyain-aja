@@ -1,6 +1,5 @@
 'use client';
 
-import { signOut } from 'next-auth/react';
 import Sidebar from '../components/layout/Sidebar';
 import MainLayout from '../components/layout/MainLayout';
 
