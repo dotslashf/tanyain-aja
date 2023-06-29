@@ -149,7 +149,7 @@ const AuthForm = () => {
               </span>
             </div>
           </div>
-          <div className="flex gap-2 mt-6">
+          <div className="flex mt-6 gap-2">
             <AuthSocialButton
               icon={BsTwitter}
               onClick={() => socialAction('twitter')}
@@ -157,7 +157,7 @@ const AuthForm = () => {
           </div>
         </div>
 
-        <div className="flex justify-center gap-2 px-2 mt-6 text-sm text-gray-500">
+        <div className="flex justify-center px-2 mt-6 text-sm text-gray-500 gap-2">
           <div>
             {variant === 'SignIn' ? 'Belum punya akun?' : 'Sudah punya akun?'}
           </div>
