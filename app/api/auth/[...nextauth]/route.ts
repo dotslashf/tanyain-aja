@@ -6,10 +6,18 @@ import { PrismaAdapter } from '@next-auth/prisma-adapter';
 
 import prisma from '@/app/libs/prisma';
 
-// const adapter = PrismaAdapter(prisma);
+const adapter = PrismaAdapter(prisma);
+// @ts-ignore
+adapter.createUser = async (data) => {
+    console.log('CREATE_USER', data);
+    return await prisma.user.create({
+        // @ts-ignore
+        data
+    });
+}
 
 export const authOptions: AuthOptions = {
-    adapter: PrismaAdapter(prisma),
+    adapter,
     providers: [
         CredentialsProvider({
             name: 'credentials',
@@ -45,6 +53,15 @@ export const authOptions: AuthOptions = {
             clientId: process.env.TWITTER_CLIENT_ID as string,
             clientSecret: process.env.TWITTER_CLIENT_SECRET as string,
             version: '2.0',
+            profile({ data }) {
+                return {
+                    id: data.id,
+                    name: data.name,
+                    username: data.username,
+                    email: null,
+                    image: data.profile_image_url,
+                }
+            },
         })
     ],
     debug: process.env.NODE_ENV === 'development',

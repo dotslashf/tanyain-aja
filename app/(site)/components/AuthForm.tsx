@@ -21,7 +21,6 @@ const AuthForm = () => {
 
   useEffect(() => {
     if (session?.status === 'authenticated') {
-      console.log('authenticated');
       router.push('/profile');
     }
   }, [router, session?.status]);
@@ -55,7 +54,7 @@ const AuthForm = () => {
           signIn('credentials', data);
         })
         .catch((err) => {
-          toast.error('Something went wrong');
+          toast.error(err.response.data);
         })
         .finally(() => {
           setIsLoading(false);
