@@ -102,15 +102,8 @@ const AuthForm = () => {
   };
 
   return (
-    <div
-      className="
-        mt-8
-        sm:mx-auto
-        sm:w-full
-        sm:max-w-md
-        "
-    >
-      <div className="bg-white px-4 py-8 shadow sm:rounded-lg sm:px-10">
+    <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+      <div className="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
         <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
           {variant === 'SignUp' && (
             <Input
@@ -151,12 +144,12 @@ const AuthForm = () => {
               <div className="w-full border-t border-gray-300" />
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="bg-white px-2 text-gray-500">
+              <span className="px-2 text-gray-500 bg-white">
                 Atau lanjut menggunakan
               </span>
             </div>
           </div>
-          <div className="mt-6 flex gap-2">
+          <div className="flex gap-2 mt-6">
             <AuthSocialButton
               icon={BsTwitter}
               onClick={() => socialAction('twitter')}
@@ -164,7 +157,7 @@ const AuthForm = () => {
           </div>
         </div>
 
-        <div className="flex gap-2 justify-center text-sm mt-6 px-2 text-gray-500">
+        <div className="flex justify-center gap-2 px-2 mt-6 text-sm text-gray-500">
           <div>
             {variant === 'SignIn' ? 'Belum punya akun?' : 'Sudah punya akun?'}
           </div>

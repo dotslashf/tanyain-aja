@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import clsx from "clsx";
-import { FieldValues, FieldErrors, UseFormRegister } from "react-hook-form";
+import clsx from 'clsx';
+import { FieldValues, FieldErrors, UseFormRegister } from 'react-hook-form';
 
 interface InputProps {
   label: string;
@@ -26,13 +26,7 @@ const Input: React.FC<InputProps> = ({
     <div>
       <label
         htmlFor={id}
-        className="
-        block
-        text-sm
-        font-medium
-        leading-6
-        text-gray-900
-        "
+        className="block text-sm font-medium leading-6 text-gray-900 "
       >
         {label}
       </label>
@@ -63,8 +57,8 @@ const Input: React.FC<InputProps> = ({
             sm:text-sm
             sm:leading-6
           `,
-            errors[id] && "focus:ring-rose-500",
-            disabled && "opacity-50 cursor-default bg-slate-200"
+            errors[id] && 'focus:ring-rose-500',
+            disabled && 'opacity-50 cursor-default bg-slate-200'
           )}
         />
       </div>
